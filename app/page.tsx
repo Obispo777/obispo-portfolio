@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+// 1. Import the specific icons from Font Awesome (via react-icons)
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 // Define what a Particle looks like for TypeScript
 interface Particle {
@@ -12,7 +14,6 @@ interface Particle {
 }
 
 export default function Home() {
-  // Tell TypeScript this ref is for an HTML Canvas element
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [displayText, setDisplayText] = useState("");
   const fullText = "Aspiring Cybersecurity Analyst | SOC Enthusiast | Future Security+";
@@ -123,15 +124,43 @@ export default function Home() {
           </p>
         </div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>
-          <a
-            href="/resume.pdf"
-            download
-            className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-300 bg-transparent border border-purple-500/50 rounded-full hover:bg-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+        {/* Wrapper for CTA Button and Social Icons */}
+        <div className="flex flex-col items-center gap-8">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>
+            <a
+              href="/resume.pdf"
+              download
+              className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-300 bg-transparent border border-purple-500/50 rounded-full hover:bg-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+            >
+              DOWNLOAD RESUME
+            </a>
+          </motion.div>
+
+          {/* Social Links Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 1.2 }}
+            className="flex gap-8 items-center"
           >
-            DOWNLOAD RESUME
-          </a>
-        </motion.div>
+            <a 
+              href="https://www.linkedin.com/in/obispo-lopez-5b82b72a0" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-cyan-400 transition-all duration-300 text-3xl hover:scale-110"
+            >
+              <FaLinkedin />
+            </a>
+            <a 
+              href="https://github.com/Obispo777" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-all duration-300 text-3xl hover:scale-110"
+            >
+              <FaGithub />
+            </a>
+          </motion.div>
+        </div>
       </div>
     </main>
   );
